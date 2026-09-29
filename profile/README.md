@@ -1,6 +1,10 @@
 # PycodersMod
 
-PycodersMod 维护一组 Minecraft Java Edition 模组与开发库。项目按用途整理；各 Mod 的 Minecraft 版本和加载器以各自仓库说明为准。
+PycodersMod 是一组由 Pycoder 自主研发的 Minecraft Java Edition Mod 项目，涵盖独立模组、跨 Mod 联动、功能扩展、开发框架与相关开发工具。
+
+项目以长期维护、实际游玩需求、兼容性探索和 Mod 开发实践为导向，并持续覆盖不同 Minecraft 版本以及 Forge、NeoForge、Fabric 等 Mod Loader。
+
+当前下列 10 个 Mod 仓库均为 Private，源码尚未公开。
 
 ## 装饰
 
@@ -9,7 +13,7 @@ PycodersMod 维护一组 Minecraft Java Edition 模组与开发库。项目按�
 
 - Minecraft：1.20.1
 - Loader：Forge
-- 状态：Alpha
+- 状态：Alpha；仓库可见性：Private（暂未公开）
 - Repository：[PycodersMod/Facade](https://github.com/PycodersMod/Facade)（Private）
 
 ## 冒险
@@ -19,7 +23,7 @@ PycodersMod 维护一组 Minecraft Java Edition 模组与开发库。项目按�
 
 - Minecraft：1.20.1
 - Loader：Forge
-- 状态：Alpha
+- 状态：Alpha；仓库可见性：Private（暂未公开）
 - Repository：[PycodersMod/PoetryCloudPlanets](https://github.com/PycodersMod/PoetryCloudPlanets)（Private）
 
 ## 实用
@@ -29,7 +33,7 @@ PycodersMod 维护一组 Minecraft Java Edition 模组与开发库。项目按�
 
 - Minecraft：1.20.1
 - Loader：Forge
-- 状态：开发中
+- 状态：开发中；仓库可见性：Private（暂未公开）
 - Repository：[PycodersMod/SharecodeChest](https://github.com/PycodersMod/SharecodeChest)（Private）
 
 ### JournalMod
@@ -37,7 +41,7 @@ PycodersMod 维护一组 Minecraft Java Edition 模组与开发库。项目按�
 
 - Minecraft：1.20.1
 - Loader：Forge
-- 状态：Alpha
+- 状态：Alpha；仓库可见性：Private（暂未公开）
 - Repository：[PycodersMod/JournalMod](https://github.com/PycodersMod/JournalMod)（Private）
 
 ## 辅助
@@ -47,7 +51,7 @@ PycodersMod 维护一组 Minecraft Java Edition 模组与开发库。项目按�
 
 - Minecraft：1.20.1
 - Loader：Forge
-- 状态：Alpha
+- 状态：Alpha；仓库可见性：Private（暂未公开）
 - Repository：[PycodersMod/TetraHolographicBlueprint](https://github.com/PycodersMod/TetraHolographicBlueprint)（Private）
 
 ### CarpetPlayerAddition
@@ -55,7 +59,7 @@ PycodersMod 维护一组 Minecraft Java Edition 模组与开发库。项目按�
 
 - Minecraft：1.21.6
 - Loader：Fabric
-- 状态：开发中
+- 状态：开发中；仓库可见性：Private（暂未公开）
 - Repository：[PycodersMod/CarpetPlayerAddition](https://github.com/PycodersMod/CarpetPlayerAddition)（Private）
 
 ## 魔改
@@ -65,7 +69,7 @@ PycodersMod 维护一组 Minecraft Java Edition 模组与开发库。项目按�
 
 - Minecraft：1.21.1
 - Loader：NeoForge
-- 状态：活跃开发
+- 状态：活跃开发；仓库可见性：Private（暂未公开）
 - Repository：[PycodersMod/CreateProbabilityTuning](https://github.com/PycodersMod/CreateProbabilityTuning)（Private）
 
 ### TaCZ in Tetra
@@ -73,7 +77,7 @@ PycodersMod 维护一组 Minecraft Java Edition 模组与开发库。项目按�
 
 - Minecraft：1.20.1
 - Loader：Forge
-- 状态：Alpha
+- 状态：Alpha；仓库可见性：Private（暂未公开）
 - Repository：[PycodersMod/TaCZinTetra](https://github.com/PycodersMod/TaCZinTetra)（Private）
 
 ## LIB
@@ -83,7 +87,7 @@ PycodersMod 维护一组 Minecraft Java Edition 模组与开发库。项目按�
 
 - Minecraft：1.20.1
 - Loader：Forge
-- 状态：骨架阶段
+- 状态：骨架阶段；仓库可见性：Private（暂未公开）
 - Repository：[PycodersMod/CustomShapezAPI](https://github.com/PycodersMod/CustomShapezAPI)（Private）
 
 ### CustomTamingFramework
@@ -91,5 +95,5 @@ PycodersMod 维护一组 Minecraft Java Edition 模组与开发库。项目按�
 
 - Minecraft：1.20.1
 - Loader：Forge
-- 状态：Alpha
+- 状态：Alpha；仓库可见性：Private（暂未公开）
 - Repository：[PycodersMod/CustomTamingFramework](https://github.com/PycodersMod/CustomTamingFramework)（Private）
