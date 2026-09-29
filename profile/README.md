@@ -4,7 +4,7 @@ PycodersMod 是一组由 Pycoder 自主研发的 Minecraft Java Edition Mod 项�
 
 项目以长期维护、实际游玩需求、兼容性探索和 Mod 开发实践为导向，并持续覆盖不同 Minecraft 版本以及 Forge、NeoForge、Fabric 等 Mod Loader。
 
-当前 10 个 Mod 仓库中，4 个已公开源码、6 个仍为 Private。MinecraftModTestLauncher 为 Private（开发中）。各仓库可见性以 GitHub 当前状态为准。
+当前 10 个 Mod 仓库中，4 个已公开源码、6 个仍为 Private。MinecraftModTestLauncher 已公开。各仓库可见性以 GitHub 当前状态为准。
 
 ## 装饰
 
@@ -101,7 +101,7 @@ PycodersMod 是一组由 Pycoder 自主研发的 Minecraft Java Edition Mod 项�
 ## 开发工具
 
 ### MinecraftModTestLauncher
-Minecraft Java Edition Mod 开发环境多实例自动测试启动器。当前为 Windows 10/11 开发预览版，支持 Loader/Java 环境检测、配置校验、Gradle 构建和构建 Session 日志；Minecraft 多实例、Integrated LAN 与 Dedicated 自动编排仍在开发中。
+面向 Windows 10/11 的 Minecraft Java Edition Mod 开发环境启动器，支持 Forge、NeoForge、Fabric 项目检测，Java/Gradle 环境解析、构建、隔离 Session、多玩家客户端编排、Integrated LAN 与 Dedicated 模式。
 
-- 仓库可见性：Private（开发中）
+- 仓库可见性：Public；Windows CI 与 Pester 测试通过
 - GitHub：[PycodersMod/MinecraftModTestLauncher](https://github.com/PycodersMod/MinecraftModTestLauncher)
