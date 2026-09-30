@@ -6,6 +6,11 @@ PycodersMod 是一组由 Pycoder 自主研发的 Minecraft Java Edition Mod 项�
 
 当前 10 个 Mod 仓库中，8 个已公开源码、2 个仍为 Private。MinecraftModTestLauncher 暂为 Private，待历史隐私缓存清除后再公开。各仓库可见性以 GitHub 当前状态为准。
 
+## Logo 约定
+
+没有独立原创标志的新 Mod 使用 Pycoder 通用临时 Logo；已有独立原创 Logo 的项目保留自己的标志。默认 Logo 主文件仅保存在维护者本机工作区，不作为额外仓库上传。
+
+
 ## 装饰
 
 ### Facade
