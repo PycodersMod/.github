@@ -4,7 +4,7 @@ PycodersMod 是一组由 Pycoder 自主研发的 Minecraft Java Edition Mod 项�
 
 项目以长期维护、实际游玩需求、兼容性探索和 Mod 开发实践为导向，并持续覆盖不同 Minecraft 版本以及 Forge、NeoForge、Fabric 等 Mod Loader。
 
-当前 10 个 Mod 仓库中，8 个已公开源码、2 个仍为 Private。MinecraftModTestLauncher 暂为 Private，待历史隐私缓存清除后再公开。各仓库可见性以 GitHub 当前状态为准。
+当前 10 个 Mod 仓库均已公开源码，MinecraftModTestLauncher 也已公开。各仓库可见性以 GitHub 当前状态为准。
 
 ## Logo 约定
 
@@ -56,7 +56,7 @@ PycodersMod 是一组由 Pycoder 自主研发的 Minecraft Java Edition Mod 项�
 
 - Minecraft：1.20.1
 - Loader：Forge
-- 状态：Alpha；仓库可见性：Private（源码暂未公开）
+- 状态：Alpha；仓库可见性：Public
 - Repository：[PycodersMod/TetraHolographicBlueprint](https://github.com/PycodersMod/TetraHolographicBlueprint)（Private）
 
 ### CarpetPlayerAddition
@@ -92,7 +92,7 @@ PycodersMod 是一组由 Pycoder 自主研发的 Minecraft Java Edition Mod 项�
 
 - Minecraft：1.20.1
 - Loader：Forge
-- 状态：骨架阶段；仓库可见性：Private（源码暂未公开）
+- 状态：骨架阶段；仓库可见性：Public
 - Repository：[PycodersMod/CustomShapezAPI](https://github.com/PycodersMod/CustomShapezAPI)（Private）
 
 ### CustomTamingFramework
@@ -108,5 +108,5 @@ PycodersMod 是一组由 Pycoder 自主研发的 Minecraft Java Edition Mod 项�
 ### MinecraftModTestLauncher
 面向 Windows 10/11 的 Minecraft Java Edition Mod 开发环境启动器，支持 Forge、NeoForge、Fabric 项目检测，Java/Gradle 环境解析、构建、隔离 Session、多玩家客户端编排、Integrated LAN 与 Dedicated 模式。
 
-- 仓库可见性：Private（待 GitHub 清理旧提交缓存后再公开）；Windows CI 与 Pester 测试通过
+- 仓库可见性：Public；Windows CI 与 Pester 测试通过
 - GitHub：[PycodersMod/MinecraftModTestLauncher](https://github.com/PycodersMod/MinecraftModTestLauncher)
