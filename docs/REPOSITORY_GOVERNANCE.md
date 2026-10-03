@@ -1,48 +1,48 @@
-# PycodersMod repository governance
+# PycodersMod 仓库治理规范
 
-This policy applies to repositories maintained by the PycodersMod organization.
+本规范适用于 PycodersMod 组织维护的仓库。
 
-## Ownership and review
+## 所有权与评审
 
-- `main` is the default integration branch.
-- Changes from contributors are submitted through pull requests.
-- Pull requests require one approval and a code owner review; stale approvals are dismissed after a new push.
-- `@ZYQ-2020` is the code owner and the only account configured to bypass the collaboration ruleset.
-- Force pushes and deletion of the default branch are blocked by a separate history-safety ruleset with no bypass actor.
-- No broad organization or administrator bypass is added by this policy.
+- `main` 是默认集成分支。
+- 贡献者的改动通过 Pull Request 提交。
+- Pull Request 至少需要一项批准和代码所有者评审；新提交后旧批准作废。
+- `@ZYQ-2020` 是代码所有者，也是 Collaboration Gate 中唯一配置的绕过账号。
+- 独立的 History Safety 规则禁止强制推送和删除默认分支，且没有绕过账号。
+- 本规范不添加组织级或管理员级的广泛绕过权限。
 
-## Local development and publication
+## 本地开发与发布
 
-Use a repository-local Git identity for new commits: account `ZYQ-2020` and its GitHub-provided noreply address. Do not change global Git identity for project work. Commit messages and published logs must not contain local absolute paths, private information, private email addresses, hostnames, or local proxy settings.
+新提交使用仓库本地 Git 身份：账号 `ZYQ-2020` 和 GitHub 提供的 noreply 邮箱。项目工作不得修改全局 Git 身份。提交信息和发布日志不得包含本机绝对路径、私人信息、私人邮箱、主机名或本机代理设置。
 
-## Applying and auditing rules
+## 应用和审计规则
 
-Use `scripts/Apply-PycodersModGovernance.ps1 -Repo <name>` to apply policy to one repository, `-All` for the complete organization set, or `-Audit` to inspect repository rulesets and active rules on `main`. The script requires the authenticated CLI identity `ZYQ-2020`, resolves the numeric account ID live, and uses repository-level ruleset APIs. It does not require organization-wide ruleset administration.
+使用 `scripts/Apply-PycodersModGovernance.ps1 -Repo <仓库名>` 将规则应用到一个仓库，使用 `-All` 应用到组织仓库清单，或使用 `-Audit` 检查仓库规则和 `main` 上生效的规则。脚本要求 GitHub CLI 登录账号为 `ZYQ-2020`，实时查询账号数字 ID，并使用 repository-level ruleset API；不要求组织级 ruleset 管理权限。
 
-## Future repository bootstrap sequence
+## 新仓库引导顺序
 
-For each new repository, complete these steps in order:
+每个新仓库均按以下顺序完成引导：
 
-1. Create the repository in the PycodersMod organization.
-2. Initialize its default branch as `main`.
-3. Set a repository-local Git identity using `ZYQ-2020` and that account's GitHub-provided noreply address; do not change the global Git identity.
-4. Add a root `CODEOWNERS` file assigning ownership to `@ZYQ-2020`.
-5. For a Mod repository, place each buildable project under `<loader>/<compatibility-line>/`; keep shared repository metadata at the root. Use the exact Minecraft version directory where the project currently targets a single version, as described in `MOD_REPOSITORY_LAYOUT.md`.
-6. Run the public-hygiene scan and resolve all findings before publication.
-7. Push the initial repository content to `main`.
-8. Apply the repository governance rulesets with `scripts/Apply-PycodersModGovernance.ps1 -Repo <name>`.
-9. Audit the repository rulesets and active rules on `main` with `scripts/Apply-PycodersModGovernance.ps1 -Audit`.
-10. Mark the repository ready for normal development only after the audit passes.
+1. 在 PycodersMod 组织中创建仓库。
+2. 将默认分支初始化为 `main`。
+3. 设置仓库本地 Git 身份为 `ZYQ-2020` 及其 GitHub noreply 邮箱，不修改全局 Git 身份。
+4. 在仓库根目录添加归属 `@ZYQ-2020` 的 `CODEOWNERS`。
+5. 若为 Mod 仓库，将每个可构建工程放在 `<loader>/<兼容线>/` 下，共享元数据留在根目录；单版本目标使用精确 Minecraft 版本目录，详见 `MOD_REPOSITORY_LAYOUT.md`。
+6. 发布前运行公开卫生扫描并解决所有发现。
+7. 将初始内容推送到 `main`。
+8. 使用 `scripts/Apply-PycodersModGovernance.ps1 -Repo <仓库名>` 应用仓库治理规则。
+9. 使用 `scripts/Apply-PycodersModGovernance.ps1 -Audit` 审计 ruleset 和 `main` 生效规则。
+10. 只有审计通过后，才将仓库标记为可正常开发。
 
-Add every new repository to the script's explicit repository allowlist. Test governance-script changes against `.github` as the canary before applying them to other repositories.
+每个新仓库都必须加入脚本的显式仓库清单，并在根目录添加 `CODEOWNERS`。修改治理脚本时先以 `.github` canary 验证，再应用到其它仓库。
 
-## Temporary clone and sparse checkout
+## 临时克隆与稀疏检出
 
-For a Mod repository, a minimal checkout can select only its project tree:
+Mod 仓库可只检出单个工程目录：
 
 ```powershell
 git clone --filter=blob:none --sparse https://github.com/PycodersMod/SharecodeChest.git <TEMP_DIR>/sharecodechest-sparse
 git -C <TEMP_DIR>/sharecodechest-sparse sparse-checkout set forge/1.20.1
 ```
 
-The selected loader/version directory is independently materialized in the working tree. Remove only the temporary clone after confirming no process uses it and no unique evidence is stored there.
+所选 Loader/版本目录可独立出现在工作树中。只有确认没有进程使用临时克隆，且其中不再存有唯一证据后，才可将其删除。

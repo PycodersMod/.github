@@ -1,12 +1,12 @@
-# Public repository hygiene
+# 公开仓库卫生规范
 
-PycodersMod repositories are public-safe by default. Before committing, opening a pull request, or uploading an artifact, check the staged/current tree and generated logs for:
+PycodersMod 仓库默认按可公开状态维护。在提交、创建 Pull Request 或上传产物前，检查暂存/当前文件树与生成日志是否含有：
 
-- machine-specific absolute paths and usernames;
-- private personal information, hostnames, or private email addresses;
-- local proxy configuration, tokens, credentials, and authentication data;
-- unredacted build/runtime logs and machine-local configuration.
+- 本机专属绝对路径和用户名；
+- 私人信息、主机名或私人邮箱；
+- 本机代理配置、令牌、凭据和认证数据；
+- 未脱敏的构建/运行日志和本机配置。
 
-Use generic placeholders such as `<WORKSPACE_ROOT>`, `<TEMP_DIR>`, and `<REPOSITORY_ROOT>` in documentation. Runtime-local evidence may retain original paths only while it remains local and unpublished. If a historical commit contains identifying metadata, record the finding and obtain explicit authorization before any history rewrite; do not force-push as part of routine cleanup.
+文档示例使用 `<WORKSPACE_ROOT>`、`<TEMP_DIR>` 和 `<REPOSITORY_ROOT>` 等通用占位符。本机运行证据仅在保留于本地且不发布时，才可保留原路径。若历史提交包含可识别的本机信息，应记录发现并在改写历史前取得明确授权；不得把强制推送作为常规清理步骤。
 
-Run `scripts/Test-PublicRepositoryHygiene.ps1 -WorkspaceRoot <WORKSPACE_ROOT>` for a current-tree scan. The scanner reports repository-relative paths and finding categories only; it must not print matched values. Review findings manually to distinguish examples and public test fixtures from actual local data.
+运行 `scripts/Test-PublicRepositoryHygiene.ps1 -WorkspaceRoot <WORKSPACE_ROOT>` 扫描当前文件树。扫描器只报告仓库相对路径和发现类别，不得打印命中的私人值。请人工复核结果，区分示例/公开测试 fixture 与真实本机信息。
