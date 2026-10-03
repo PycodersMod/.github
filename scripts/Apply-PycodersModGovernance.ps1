@@ -72,7 +72,13 @@ function Set-RepositoryRuleset {
 }
 
 function Test-RepositoryGovernance([string]$Repository) {
-    $rulesets = @(Invoke-GhJson "repos/$owner/$Repository/rulesets?includes_parents=true")
+    $rulesetSummaries = @(Invoke-GhJson "repos/$owner/$Repository/rulesets?includes_parents=true")
+    $rulesets = foreach ($summary in $rulesetSummaries) {
+        if ($summary.source_type -eq 'Repository' -and $summary.source -ceq "$owner/$Repository") {
+            Invoke-GhJson "repos/$owner/$Repository/rulesets/$($summary.id)"
+        }
+    }
+    $rulesets = @($rulesets)
     $mainRules = @(Invoke-GhJson "repos/$owner/$Repository/rules/branches/main")
     $collaboration = @($rulesets | Where-Object name -eq 'PycodersMod Collaboration Gate')
     $history = @($rulesets | Where-Object name -eq 'PycodersMod History Safety')
@@ -87,7 +93,8 @@ function Test-RepositoryGovernance([string]$Repository) {
         Repository = $Repository
         CollaborationGate = ($collaboration.Count -eq 1 -and $collaboration[0].enforcement -eq 'active')
         SingleCodeOwnerBypass = ($approvers.Count -eq 1 -and $approvers[0].actor_id -eq $actorId -and $approvers[0].actor_type -eq 'User' -and $approvers[0].bypass_mode -eq 'always')
-        PullRequestAndOneApproval = ($null -ne $pull -and $pull.parameters.required_approving_review_count -eq 1 -and $pull.parameters.require_code_owner_review -eq $true)
+        PullRequestAndOneApproval = ($null -ne $pull -and $pull.parameters.required_approving_review_count -eq 1 -and $pull.parameters.require_code_owner_review -eq $true -and $pull.parameters.dismiss_stale_reviews_on_push -eq $true)
+        DefaultBranchOnly = (@($collaboration[0].conditions.ref_name.include) -contains '~DEFAULT_BRANCH' -and @($history[0].conditions.ref_name.include) -contains '~DEFAULT_BRANCH')
         HistorySafety = ($history.Count -eq 1 -and $history[0].enforcement -eq 'active' -and $historyTypes -contains 'deletion' -and $historyTypes -contains 'non_fast_forward' -and @($history[0].bypass_actors).Count -eq 0)
         MainRequiresPullRequest = ($mainTypes -contains 'pull_request')
         MainBlocksForcePush = ($mainTypes -contains 'non_fast_forward')
@@ -101,7 +108,7 @@ if ($Audit) {
     $targets = if ($Repo) { @($Repo) } else { $repositories }
     $auditResults = foreach ($name in $targets) { Test-RepositoryGovernance $name }
     $auditResults | Format-Table -AutoSize
-    if (@($auditResults | Where-Object { -not $_.CollaborationGate -or -not $_.SingleCodeOwnerBypass -or -not $_.PullRequestAndOneApproval -or -not $_.HistorySafety -or -not $_.MainRequiresPullRequest -or -not $_.MainBlocksForcePush -or -not $_.MainBlocksDeletion }).Count -gt 0) { exit 1 }
+    if (@($auditResults | Where-Object { -not $_.CollaborationGate -or -not $_.SingleCodeOwnerBypass -or -not $_.PullRequestAndOneApproval -or -not $_.DefaultBranchOnly -or -not $_.HistorySafety -or -not $_.MainRequiresPullRequest -or -not $_.MainBlocksForcePush -or -not $_.MainBlocksDeletion }).Count -gt 0) { exit 1 }
     exit 0
 }
 
