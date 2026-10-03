@@ -19,7 +19,22 @@ Use a repository-local Git identity for new commits: account `ZYQ-2020` and its 
 
 Use `scripts/Apply-PycodersModGovernance.ps1 -Repo <name>` to apply policy to one repository, `-All` for the complete organization set, or `-Audit` to inspect repository rulesets and active rules on `main`. The script requires the authenticated CLI identity `ZYQ-2020`, resolves the numeric account ID live, and uses repository-level ruleset APIs. It does not require organization-wide ruleset administration.
 
-New repositories should be added to the script's explicit repository allowlist, receive a root `CODEOWNERS`, and pass `-Audit` after policy application. Test changes against `.github` as the canary before applying to other repositories.
+## Future repository bootstrap sequence
+
+For each new repository, complete these steps in order:
+
+1. Create the repository in the PycodersMod organization.
+2. Initialize its default branch as `main`.
+3. Set a repository-local Git identity using `ZYQ-2020` and that account's GitHub-provided noreply address; do not change the global Git identity.
+4. Add a root `CODEOWNERS` file assigning ownership to `@ZYQ-2020`.
+5. For a Mod repository, place each buildable project under `<loader>/<compatibility-line>/`; keep shared repository metadata at the root. Use the exact Minecraft version directory where the project currently targets a single version, as described in `MOD_REPOSITORY_LAYOUT.md`.
+6. Run the public-hygiene scan and resolve all findings before publication.
+7. Push the initial repository content to `main`.
+8. Apply the repository governance rulesets with `scripts/Apply-PycodersModGovernance.ps1 -Repo <name>`.
+9. Audit the repository rulesets and active rules on `main` with `scripts/Apply-PycodersModGovernance.ps1 -Audit`.
+10. Mark the repository ready for normal development only after the audit passes.
+
+Add every new repository to the script's explicit repository allowlist. Test governance-script changes against `.github` as the canary before applying them to other repositories.
 
 ## Temporary clone and sparse checkout
 
