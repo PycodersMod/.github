@@ -114,7 +114,7 @@ foreach ($name in $targets) {
         enforcement = 'active'
         bypass_actors = @(@{ actor_id = $actorId; actor_type = 'User'; bypass_mode = 'always' })
         conditions = @{ ref_name = @{ include = @('~DEFAULT_BRANCH'); exclude = @() } }
-        rules = @(@{ type = 'pull_request'; parameters = @{ required_approving_review_count = 1; dismiss_stale_reviews_on_push = $true; require_code_owner_review = $true; require_last_push_approval = $false; allowed_merge_methods = @('merge', 'squash', 'rebase') } })
+        rules = @(@{ type = 'pull_request'; parameters = @{ required_approving_review_count = 1; dismiss_stale_reviews_on_push = $true; require_code_owner_review = $true; require_last_push_approval = $false; required_review_thread_resolution = $false; allowed_merge_methods = @('merge', 'squash', 'rebase') } })
     }
     $historySafety = @{
         name = 'PycodersMod History Safety'
