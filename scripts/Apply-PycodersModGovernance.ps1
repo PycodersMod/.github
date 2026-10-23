@@ -11,7 +11,7 @@ $repositories = @(
     '.github', 'CustomShapezAPI', 'Facade', 'TaCZinTetra',
     'TetraHolographicBlueprint', 'JournalMod', 'CarpetPlayerAddition',
     'PoetryCloudPlanets', 'CustomTamingFramework',
-    'CreateProbabilityTuning', 'SharecodeChest', 'MinecraftModTestLauncher'
+    'CreateProbabilityTuning', 'SharecodeChest', 'MinecraftModTestLauncher', 'CreateTetraHandcraft'
 )
 
 if (-not $Audit -and -not $All -and [string]::IsNullOrWhiteSpace($Repo)) {
