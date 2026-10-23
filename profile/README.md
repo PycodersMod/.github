@@ -18,6 +18,11 @@ PycodersMod 致力于开发 Minecraft Java Edition 模组与工具，关注独�
 | SharecodeChest | 1.20.1 | Forge | [源码](https://github.com/PycodersMod/SharecodeChest) |
 | MinecraftModTestLauncher | — | 开发工具 | [源码](https://github.com/PycodersMod/MinecraftModTestLauncher) |
 
+## 研究项目
+
+- [XLoader](https://github.com/PycodersMod/XLoader)：独立 Minecraft Mod Loader；当前研究暂停，尚未实现，暂不声明兼容版本。
+- [XTranslator](https://github.com/PycodersMod/XTranslator)：独立的离线 Mod 转换工具；当前研究暂停，尚未实现，暂不声明兼容版本。
+
 ## 参与贡献
 
 欢迎提交 issue 和聚焦明确的 Pull Request。请阅读[贡献指南](https://github.com/PycodersMod/.github/blob/main/CONTRIBUTING.md)与[仓库治理规范](https://github.com/PycodersMod/.github/blob/main/docs/REPOSITORY_GOVERNANCE.md)。各项目的构建说明和支持范围以对应仓库的 README 为准。
